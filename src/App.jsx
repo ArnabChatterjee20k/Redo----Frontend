@@ -5,6 +5,8 @@ import './App.css'
 import Login from './components/Login/Login'
 import SignIn from './components/SignIn/SignIn'
 import MyMap from './components/map/mapBox'
+import Match from './components/match/matching'
+
 import ForgotPass from './components/Forgot password/ForgotPass'
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
       {/* <Login/> */}
     {/* <SignIn/> */}
     <MyMap/>
+    <Match/>
     {/* <ForgotPass/> */}
     </div>
   )
