@@ -3,6 +3,7 @@ import loginimg from "../../assets/login.png";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import bgImag from '../../assets/Oval Copy 2.png'
 
 const Login = () => {
   const [userName, setUserName] = useState("");
@@ -13,8 +14,9 @@ const Login = () => {
     console.log("password : ", password);
   };
   return (
-    <div className="bg-white lg:w-[25vw] xl:w-[25vw] md:w-[100vw] w-[100vw] mx-auto h-full flex flex-col justify-between pt-[30vh]">
-          <h1 className="text-3xl font-bold w-full text-center">Login</h1>
+    <div className="login relative bg-white lg:w-[25vw] xl:w-[25vw] md:w-[100vw] w-[100vw] mx-auto h-full flex flex-col justify-between pt-[30vh]">
+          
+          <img src={bgImag} alt="img" className="absolute top-0 left-0 z-0"/>
       <div className="flex px-8 pt-6 gap-2">
         <button className="w-full flex gap-2 justify-center items-center  bg-[#7C50FF] py-2 rounded-xl font-semibold text-white">
           <FaGoogle className="text-xl"/> <span>With Google</span>

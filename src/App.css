@@ -1,3 +1,9 @@
 .imageUpload{
     all: unset;
 }
+/* .login{
+    background-image: url('./assets//Oval\ Copy\ 2.png');
+} *//* src/styles/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+/* src/styles/styles.css */
+@import '~typeface-poppins/index.css';
