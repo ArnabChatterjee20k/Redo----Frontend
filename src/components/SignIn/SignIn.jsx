@@ -7,23 +7,42 @@ import heart1 from '../../assets/heart 4.png'
 import heart3 from '../../assets/heart 5.png'
 import heart2 from '../../assets/heart 6.png'
 import bgImag from '../../assets/Oval Copy 2.png'
+import axios from 'axios';
 
 
 const SignIn = () => {
     const [firstName,setFirstName] = useState('');
     const [lastName,setLastName] = useState('');
-    const [date,setDate] = useState('');
-    const [pass,setPass] = useState('');
-    const [conPass,setConPass] = useState('');
+    const [dob,setDate] = useState('');
+    const [password,setPass] = useState('');
+    const [confirmPassword,setConPass] = useState('');
     const [email,setEmail] = useState('');
-    const [userName,setUserName] = useState('');
-    const signinHandler = (e) =>{
+    const [username,setUserName] = useState('');
+    const signinHandler = async(e) =>{
         e.preventDefault();
+        try {
+          await axios.post('http://localhost:3000/api/v1/signin',{
+            username:username,
+            password:password,
+            email:email,
+            firstName:firstName,
+            lastName:lastName,
+            dob:dob,
+            confirmPassword:confirmPassword
+
+          }).then((res)=>{
+            console.log(res.data.message)
+          })
+        } catch (error) {
+          console.log(error);
+        }
         console.log("firstName : ", firstName);
         console.log("lastName : ", lastName);
-        console.log("date : ", date);
-        console.log("pass : ", pass);
-        console.log("conPass : ", conPass);
+        console.log("date : ", dob);
+        console.log("pass : ", password);
+        console.log("confirmPassword : ", confirmPassword);
+        console.log("email : ", email);
+        console.log("username : ", username);
     }
   return (
     <div className="pb-3 bg lg:w-[25vw] xl:w-[25vw] md:w-[100vw] w-[100vw] mx-auto h-full flex flex-col justify-between bg-[#fff] relative">
@@ -49,10 +68,16 @@ const SignIn = () => {
               <input onChange={(e)=>setDate(e.target.value)} type="date" id="dob" className="w-full text-black/50 py-[7px] px-2 border-[.5px] rounded-2xl border-black/25" />
             </div>
             <div className="flex flex-col gap-1 w-full">
-              <input onChange={(e)=>setPass(e.target.value)} type="text" id="pass" className="w-full py-[7px] px-2 border-[.5px] rounded-2xl border-black/25" placeholder='Password'/>
+              <input onChange={(e)=>setPass(e.target.value)} type="password" id="pass" className="w-full py-[7px] px-2 border-[.5px] rounded-2xl border-black/25" placeholder='Password'/>
             </div>
             <div className="flex flex-col gap-1">
               <input onChange={(e)=>setConPass(e.target.value)} id="conpass" type="password" className="w-full py-[7px] px-2 border-[.5px] rounded-2xl border-black/25" placeholder='Confirm Password'/>
+            </div>
+            <div className="flex flex-col gap-1">
+              <input onChange={(e)=>setEmail(e.target.value)} id="email" type="email" className="w-full py-[7px] px-2 border-[.5px] rounded-2xl border-black/25" placeholder='Email'/>
+            </div>
+            <div className="flex flex-col gap-1">
+              <input onChange={(e)=>setUserName(e.target.value)} id="username" type="text" className="w-full py-[7px] px-2 border-[.5px] rounded-2xl border-black/25" placeholder='Username'/>
             </div>
           </div>
           <button type='submit' className="w-full bg-[#7C50FF] py-3 rounded-2xl font-semibold text-white ">Signin</button>
