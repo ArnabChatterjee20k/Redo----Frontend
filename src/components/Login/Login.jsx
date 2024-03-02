@@ -13,15 +13,17 @@ const Login = () => {
     e.preventDefault();
      try {
       await axios.post('http://localhost:3000/api/v1/login', {username, password}).then((res)=>{
-        console.log(res.data.message)
+        console.log(res.data.message);
+        localStorage.setItem("id",res.data.id)
+        localStorage.setItem("id",res.data.username)
       })
      } catch (error) {
       console.log(error);
      }
   
     
-    console.log("username : ", username);
-    console.log("password : ", password);
+    // console.log("username : ", username);
+    // console.log("password : ", password);
   };
   return (
     <div className="login relative bg-white lg:w-[25vw] xl:w-[25vw] md:w-[100vw] w-[100vw] mx-auto h-full flex flex-col justify-between pt-[30vh]">

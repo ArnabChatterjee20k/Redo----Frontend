@@ -36,13 +36,13 @@ const SignIn = () => {
         } catch (error) {
           console.log(error);
         }
-        console.log("firstName : ", firstName);
-        console.log("lastName : ", lastName);
-        console.log("date : ", dob);
-        console.log("pass : ", password);
-        console.log("confirmPassword : ", confirmPassword);
-        console.log("email : ", email);
-        console.log("username : ", username);
+        // console.log("firstName : ", firstName);
+        // console.log("lastName : ", lastName);
+        // console.log("date : ", dob);
+        // console.log("pass : ", password);
+        // console.log("confirmPassword : ", confirmPassword);
+        // console.log("email : ", email);
+        // console.log("username : ", username);
     }
   return (
     <div className="pb-3 bg lg:w-[25vw] xl:w-[25vw] md:w-[100vw] w-[100vw] mx-auto h-full flex flex-col justify-between bg-[#fff] relative">
