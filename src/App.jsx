@@ -19,7 +19,7 @@ function App() {
       {/* <Login/> */}
       {/* <SignIn/> */}
       <MyMap />
-      <Match />
+      {/* <Match /> */}
 
       <div className="bg-black h-[100vh] w-[100vw] xl:py-5 lg:py-5 md:py-0 py-0 overflow-x-hidden">
         {/* <Login/> */}
@@ -29,7 +29,7 @@ function App() {
 
         {/* <ForgotPass/> */}
         {/* <GetStarted/> */}
-        <UploadImage />
+        {/* <UploadImage /> */}
       </div>
     </div>
   );
