@@ -19,7 +19,7 @@ const SignIn = () => {
         console.log("conPass : ", conPass);
     }
   return (
-    <div className=" w-[25vw] mx-auto h-full flex flex-col justify-between bg-[#3586FF]">
+    <div className=" lg:w-[25vw] xl:w-[25vw] md:w-[100vw] w-[100vw] mx-auto h-full flex flex-col justify-between bg-[#3586FF]">
     <img src={batman} alt="img" className="w-[70%] mx-auto h-[50%]" />
     <div className="flex flex-col px-8 pt-6 gap-2 rounded-t-3xl h-full bg-white ">
       <div className="w-full">
