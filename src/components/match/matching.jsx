@@ -1,82 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-// Card component
-const Card = ({ name, onSwipeRight, onSwipeLeft }) => {
-  const handleSwipeRight = () => {
-    onSwipeRight(name);
-  };
+const MatchingAlgorithm = () => {
+  // Dummy user data for demonstration
+  const users = [
+    { id: 1, name: 'Alice', interests: ['hiking', 'reading', 'cooking'] },
+    { id: 2, name: 'Bob', interests: ['reading', 'gardening', 'painting'] },
+    { id: 3, name: 'Charlie', interests: ['hiking', 'cooking', 'traveling'] },
+    { id: 4, name: 'Diana', interests: ['cooking', 'painting', 'traveling'] },
+  ];
 
-  const handleSwipeLeft = () => {
-    onSwipeLeft(name);
-  };
-
-  return (
-    <div className="card">
-      <h2>{name}</h2>
-      <button onClick={handleSwipeRight}>Swipe Right</button>
-      <button onClick={handleSwipeLeft}>Swipe Left</button>
-    </div>
-  );
-};
-
-// DatingApp component
-const Match = () => {
-  const [cards, setCards] = useState([]);
+  // State to store matches
   const [matches, setMatches] = useState([]);
 
-  // Function to add a new card
-  const addCard = (name) => {
-    setCards([...cards, { name, swipedRight: false }]);
-  };
+  useEffect(() => {
+    // Call the matching algorithm function when component mounts
+    findMatches();
+  }, []);
 
-  // Function to handle swipe right
-  const handleSwipeRight = (name) => {
-    const updatedCards = cards.map((card) =>
-      card.name === name ? { ...card, swipedRight: true } : card
-    );
-    setCards(updatedCards);
-    checkMatch(updatedCards);
-  };
+  const findMatches = () => {
+    const matchedUsers = [];
 
-  // Function to handle swipe left
-  const handleSwipeLeft = (name) => {
-    // Not handling swipe left in this example
-    console.log(`${name} swiped left`);
-  };
-
-  // Function to check for matches
-  const checkMatch = (updatedCards) => {
-    const swipedRightNames = updatedCards.filter((card) => card.swipedRight).map((card) => card.name);
-    const newMatches = [];
-    for (let i = 0; i < swipedRightNames.length - 1; i++) {
-      for (let j = i + 1; j < swipedRightNames.length; j++) {
-        newMatches.push(`${swipedRightNames[i]} and ${swipedRightNames[j]}`);
+    // Iterate through each user
+    users.forEach((user1, index1) => {
+      // Compare each user with other users
+      for (let index2 = index1 + 1; index2 < users.length; index2++) {
+        const user2 = users[index2];
+        // Check for common interests
+        const commonInterests = user1.interests.filter(interest => user2.interests.includes(interest));
+        // If there are common interests, add them to matches
+        if (commonInterests.length > 0) {
+          matchedUsers.push({ user1, user2, commonInterests });
+        }
       }
-    }
-    setMatches(newMatches);
+    });
+
+    setMatches(matchedUsers);
   };
 
   return (
-    <div>
-      <h1>Dating App</h1>
-      <button onClick={() => addCard('Alice')}>Add Alice</button>
-      <button onClick={() => addCard('Bob')}>Add Bob</button>
-      <button onClick={() => addCard('Charlie')}>Add Charlie</button>
-      <button onClick={() => addCard('David')}>Add David</button>
-      <button onClick={() => addCard('Eve')}>Add Eve</button>
-      <div className="cards">
-        {cards.map((card, index) => (
-          <Card key={index} name={card.name} onSwipeRight={handleSwipeRight} onSwipeLeft={handleSwipeLeft} />
-        ))}
-      </div>
+    <div className="matches">
       <h2>Matches</h2>
       <ul>
         {matches.map((match, index) => (
-          <li key={index}>{match}</li>
+          <li key={index}>
+            <p>{`${match.user1.name} and ${match.user2.name} have common interests in: ${match.commonInterests.join(', ')}`}</p>
+          </li>
         ))}
       </ul>
     </div>
   );
 };
 
-export default Match;
+export default MatchingAlgorithm;

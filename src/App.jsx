@@ -15,7 +15,7 @@ function App() {
     <div>
       {/* <Login/> */}
     {/* <SignIn/> */}
-    <MyMap/>
+    {/* <MyMap/> */}
     <Match/>
     {/* <ForgotPass/> */}
     </div>
