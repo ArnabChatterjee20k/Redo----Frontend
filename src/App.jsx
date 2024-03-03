@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { Profiler, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -11,6 +11,8 @@ import MapComponents from './components/map components/MapComponents'
 import GetStarted from './components/Get Started/GetStarted'
 import { UploadImage } from './components/UploadImage/UploadImage'
 import MyMobile from './components/MyMobile/MyMobile'
+import Profile from './components/Profile/Profile'
+import InterestSwipe from './components/InterestSwipe/InterestSwipe'
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
     {/* <GetStarted/> */}
     {/* <UploadImage/> */}
     {/* <MyMobile/> */}
+    {/* <Profile/> */}
+    <InterestSwipe/>
     </div>
   );
 }
