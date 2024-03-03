@@ -3,29 +3,44 @@ import loginimg from "../../assets/login.png";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import bgImag from '../../assets/Oval Copy 2.png'
+import axios from 'axios'
 
 const Login = () => {
-  const [userName, setUserName] = useState("");
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const loginHandler = (e) => {
+  const loginHandler = async(e) => {
     e.preventDefault();
-    console.log("username : ", userName);
-    console.log("password : ", password);
+     try {
+      await axios.post('http://localhost:3000/api/v1/login', {username, password}).then((res)=>{
+        console.log(res.data.message);
+        localStorage.setItem("id",res.data.id)
+        localStorage.setItem("id",res.data.username)
+      })
+     } catch (error) {
+      console.log(error);
+     }
+  
+    
+    // console.log("username : ", username);
+    // console.log("password : ", password);
   };
   return (
-    <div className="bg-white lg:w-[25vw] xl:w-[25vw] md:w-[100vw] w-[100vw] mx-auto h-full flex flex-col justify-between pt-[30vh]">
-          <h1 className="text-3xl font-bold w-full text-center">Login</h1>
-      <div className="flex px-8 pt-6 gap-2">
-        <button className="w-full flex gap-2 justify-center items-center  bg-[#7C50FF] py-2 rounded-xl font-semibold text-white">
+    <div className="login relative bg-white lg:w-[25vw] xl:w-[25vw] md:w-[100vw] w-[100vw] mx-auto h-full flex flex-col justify-between pt-[30vh]">
+          
+          <img src={bgImag} alt="img" className="absolute top-0 left-0 z-0"/>
+        <div className="w-full text-center text-3xl font-extrabold">Log in</div>
+      <button className="flex px-8 pt-6 gap-2">
+        <div className="w-full flex gap-2 justify-center items-center  bg-[#7C50FF] py-2 rounded-xl font-semibold text-white">
           <FaGoogle className="text-xl"/> <span>With Google</span>
-        </button>
-        <button className="p-2 border rounded-xl hover:bg-black/10">
+        </div>
+        <div className="p-2 border rounded-xl hover:bg-black/10">
           <FaTwitter className="text-xl"/>
-        </button>
-        <button className="p-2 border rounded-xl hover:bg-black/10">
+        </div>
+        <div className="p-2 border rounded-xl hover:bg-black/10">
           <FaFacebook className="text-xl"/>
-        </button>
-      </div>
+        </div>
+      </button>
       <h1 className="w-full text-center text-black/60 mt-6">
             Or with Email
           </h1>
@@ -44,8 +59,8 @@ const Login = () => {
                   onChange={(e) => setUserName(e.target.value)}
                   type="text"
                   id="username"
-                  className="w-full py-2 px-2 border-[1px] rounded-lg border-black"
-                  placeholder="enter your username"
+                  className="w-full  py-2 px-2 border-[1px] rounded-lg border-black"
+                  placeholder="Username"
                 />
               </div>
               <div className="flex flex-col gap-1">
@@ -57,7 +72,7 @@ const Login = () => {
                   id="pass"
                   type="password"
                   className="w-full py-2 px-2 border-[1px] rounded-lg border-black"
-                  placeholder="enter your password"
+                  placeholder="Password"
                 />
               </div>
             </div>
