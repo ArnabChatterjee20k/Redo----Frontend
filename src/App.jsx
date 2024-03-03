@@ -7,8 +7,9 @@ import SignIn from './components/SignIn/SignIn'
 import MyMap from './components/map/mapBox'
 import Match from './components/match/matching'
 import PersonalityTest from './components/personality_test/personality'
-
+// import Spotify from './components/spotify/Spotify'
 import ForgotPass from './components/Forgot password/ForgotPass'
+import Swapper from './components/swap/swap'
 
 function App() {
   const [personalityCategory, setPersonalityCategory] = useState(null);
@@ -35,6 +36,7 @@ function App() {
         </div>
       )}
     </div>
+    <Swapper/>
     {/* <ForgotPass/> */}
     </div>
   )
